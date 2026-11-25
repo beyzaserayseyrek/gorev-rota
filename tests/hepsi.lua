@@ -6,5 +6,6 @@ local T = dofile("tests/yardimci.lua")
 dofile("tests/atlas_test.lua")
 dofile("tests/planlayici_test.lua")
 dofile("tests/adaptor_test.lua")
+dofile("tests/eklenti_test.lua")
 
 T.ozet()

@@ -1,0 +1,27 @@
+## Interface: 120000, 120001, 120005, 120007
+## Title: GörevRota
+## Notes: Gorev duraklarini ATLAS algoritmasiyla siralar
+## Author: Beyza Seray Seyrek
+## Version: 0.1.0
+## SavedVariables: GorevRotaDB
+
+# Çekirdek (oyundan bağımsız)
+core\graf.lua
+core\atlas.lua
+core\rota_cozucu.lua
+core\gorev_modeli.lua
+core\planlayici.lua
+
+# Oyunla konuşan katman
+oyun\wow_gorev_adaptoru.lua
+oyun\olay_yayincisi.lua
+
+# Arayüz
+arayuz\metinler.lua
+arayuz\yon_oku.lua
+arayuz\liste_paneli.lua
+
+# Komutlar, cephe ve giriş noktası
+komutlar\komutlar.lua
+GorevRotaCephesi.lua
+GorevRota.lua
