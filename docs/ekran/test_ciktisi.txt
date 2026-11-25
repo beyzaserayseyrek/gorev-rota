@@ -1,0 +1,121 @@
+
+== ATLAS çekirdeği — bbtas.kiss2.fsm, Java ile karşılaştırma
+  [TAMAM] graf 24 kenar içeriyor
+  [TAMAM] 0 durumundan çıkan 4 başlangıç kenarı var
+  [TAMAM] kenar sırası Java printPath ile aynı
+  [TAMAM] test dizisi Java getTestSuite ile aynı
+  [TAMAM] Main.java çıktısı ile aynı
+
+== ATLAS çekirdeği — küçük elle kontrol edilebilir graf
+  [TAMAM] üçgende a, b, c sırası
+  [TAMAM] çıkmaz kenarda yol boş döner
+  [TAMAM] ve son kenar başlangıç kenarıdır
+
+== Planlayıcı — örnek senaryo
+      1. Kurt Avı [AL]                   (+7 sn)
+      2. Mektup [HEDEF]                   (+19 sn)
+      3. Kurt Avı [HEDEF]                (+23 sn)
+      4. Mektup [TESLIM]                  (+17 sn)
+      5. Kurt Avı [TESLIM]               (+7 sn)
+      6. Uç: Batı Kampı -> Doğu Kulesi (+8 sn)
+      7. Uzak Köy [HEDEF]                (+116 sn)
+     Toplam: 197 sn, çözücü: ATLAS
+  [TAMAM] rota ATLAS ile hesaplandı
+  [TAMAM] ulaşılabilir 6 durağın hepsi planda
+  [TAMAM] Kurt Avı [AL] planda
+  [TAMAM] Kurt Avı [HEDEF] planda
+  [TAMAM] Kurt Avı [TESLIM] planda
+  [TAMAM] Mektup [HEDEF] planda
+  [TAMAM] Mektup [TESLIM] planda
+  [TAMAM] Uzak Köy [HEDEF] planda
+  [TAMAM] Kurt Avı: önce AL sonra HEDEF
+  [TAMAM] Kurt Avı: önce HEDEF sonra TESLİM
+  [TAMAM] Mektup: önce HEDEF sonra TESLİM
+  [TAMAM] uzak durağa gitmeden önce uçuş kullanıldı
+  [TAMAM] 3 durak ulaşılamaz (başka kıta / önkoşulu başka kıtada)
+  [TAMAM] ulaşılamayanlar doğru duraklar
+  [TAMAM] toplam süre makul (uçuşsuz yürüme ~430 sn sürerdi)
+  [TAMAM] en uzak durak en sona kaldı (gidip dönme yok)
+
+== Planlayıcı — uç durumlar
+  [TAMAM] durak yoksa plan boş
+  [TAMAM] tek durakta tek adım
+  [TAMAM] 70 yard / 7 yard/sn = 10 sn
+
+== Strategy — RotaCozucu arayüzü
+  [TAMAM] coz() yöntemi olmayan çözücü reddedilir
+
+== Planlayıcı — büyük senaryo (40 durak, 12 uçuş noktası)
+     58 adım, toplam 7005 sn, hesap 5 ms
+  [TAMAM] 40 durağın hepsi planda
+  [TAMAM] ulaşılamayan durak yok
+  [TAMAM] hesap yarım saniyeden kısa sürdü (oyun takılmasın)
+
+== Adapter — oyun API'si -> görev modeli
+  [TAMAM] oyuncunun kıtası okundu
+  [TAMAM] harita konumu 0.10 -> 100 yard
+  [TAMAM] harita numarası saklandı (yön oku için)
+  [TAMAM] başlık ve gizli görev atlandı, 4 durak üretildi
+  [TAMAM] bitmemiş görev -> HEDEF
+  [TAMAM] hedefin konumu harita işaretinden okundu
+  [TAMAM] teslim yeri biliniyorsa TESLİM durağı da eklendi
+  [TAMAM] bitmiş görev -> yalnızca TESLİM
+  [TAMAM] başka kıtadaki görevin kıtası doğru
+  [TAMAM] ulaşılamayan uçuş noktası atlandı
+  [TAMAM] uçuş noktasının adı okundu
+  [TAMAM] konum bilinmiyorsa (ör. zindan) nil döner
+  [TAMAM] başka kıtadaki görev ulaşılamaz listesinde
+  [TAMAM] kalan görevler için plan çıktı
+
+== Eklenti — .toc ile yükleme (sahte WoW ortamı)
+  [TAMAM] .toc'taki 13 dosyanın hepsi hatasız yüklendi
+  [TAMAM] başka eklentinin yüklenmesi bizi kurmaz
+  [TAMAM] /gr komutu kaydedildi
+  [TAMAM] kısa komut /gr
+  [TAMAM] kayıtlı veri tablosu oluşturuldu
+  [TAMAM] sohbete 'yüklendi' yazıldı
+
+== Eklenti — /gr komutları (Command)
+  [TAMAM] boş komut yardımı gösterir
+  [TAMAM] /gr plan bir plan üretti
+  [TAMAM] plan ATLAS ile hesaplandı
+  [TAMAM] sohbete özet yazıldı
+  [TAMAM] başka kıtadaki görev için uyarı verildi
+  [TAMAM] panel açıldı
+  [TAMAM] ilk satır 'SIMDI' ile işaretli
+  [TAMAM] satır başında ok var
+  [TAMAM] alt bilgide çözücü adı var
+  [TAMAM] yön oku sıradaki durağa çevrildi
+  [TAMAM] /gr list sıralı listeyi yazdı
+  [TAMAM] /gr panel paneli kapattı
+  [TAMAM] /gr panel tekrar açtı
+
+== Eklenti — elle durak ekleme
+  [TAMAM] elle durak kaydedildi
+  [TAMAM] koordinat 15 -> 0.15
+  [TAMAM] elle durak plana girdi
+  [TAMAM] en yakın durak ilk sırada
+  [TAMAM] elle durak için haritaya yer işareti kondu
+  [TAMAM] /gr tamam elle durağı sildi
+  [TAMAM] ad verilmezse 'Durak'
+  [TAMAM] koordinat verilmezse oyuncunun yeri
+  [TAMAM] /gr temizle hepsini sildi
+  [TAMAM] yanlış türde kullanım bilgisi gösterilir
+  [TAMAM] bilinmeyen komut bildirilir
+
+== Eklenti — oyun olayları (Observer)
+  [TAMAM] QUEST_ACCEPTED: teslim yeri kaydedildi
+  [TAMAM] art arda gelen olaylar tek bir güncellemede birleşti
+  [TAMAM] yeni görevin HEDEF ve TESLİM durakları plana girdi
+  [TAMAM] QUEST_TURNED_IN: teslim yeri silindi
+  [TAMAM] TAXIMAP_OPENED: 2 uçuş noktası kaydedildi
+  [TAMAM] sohbete bildirildi
+  [TAMAM] konum yoksa (zindan) anlaşılır uyarı
+
+== Metinler
+  [TAMAM] 45 sn
+  [TAMAM] 200 sn -> 3 dk 20 sn
+  [TAMAM] 120 sn -> 2 dk
+  [TAMAM] ı ş ğ İ Ş harfleri yazı tipine uygunlaştırıldı
+
+Sonuç: 86 test geçti, 0 test kaldı.
